@@ -1,0 +1,52 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.5.2 Safari/537.36" version="29.6.1">
+  <diagram name="Page-1" id="ER3FMCY57ubHrBHDtlYf">
+    <mxGraphModel dx="1322" dy="1163" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="550" width="280" x="60" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="MAIN" vertex="1">
+          <mxGeometry height="100" width="180" x="100" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-2" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;MAIN&lt;/h1&gt;&lt;p&gt;- Starts gin router&lt;/p&gt;&lt;p&gt;- Starts logger&lt;/p&gt;&lt;p&gt;- Use middleware.Authentication&lt;/p&gt;&lt;p&gt;- Connect&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- FoodRoutes&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- MenuRouter&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- OrderRoutes&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- TableRoutes&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- OrderItemRoutes&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- InvoiceRoutes&lt;br&gt;&lt;/p&gt;&lt;p&gt;- RUNS&amp;nbsp;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="350" width="180" x="100" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="570" width="630" x="490" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-14" edge="1" parent="1" source="7SQDS-J2Gl2ETFlPr408-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="7SQDS-J2Gl2ETFlPr408-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="routes" vertex="1">
+          <mxGeometry height="60" width="120" x="660" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="UserRoutes" vertex="1">
+          <mxGeometry height="60" width="120" x="540" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="FoodRoutes" vertex="1">
+          <mxGeometry height="60" width="120" x="700" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="GET : /users&lt;div&gt;GET :/users/:user_id&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;POST :&amp;nbsp; /users/signup&lt;/div&gt;&lt;div&gt;POST :/users/login&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="133" x="540" y="248" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-15" edge="1" parent="1" source="7SQDS-J2Gl2ETFlPr408-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.609;entryY=0.053;entryDx=0;entryDy=0;entryPerimeter=0;" target="7SQDS-J2Gl2ETFlPr408-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-17" edge="1" parent="1" source="7SQDS-J2Gl2ETFlPr408-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.113;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;" target="7SQDS-J2Gl2ETFlPr408-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="GET : /foods&lt;div&gt;GET :/foods/:food_id&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;POST :&amp;nbsp; /foods&lt;/div&gt;&lt;div&gt;PATH : /foods/food_id&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="133" x="687" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="390" width="640" x="490" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="7SQDS-J2Gl2ETFlPr408-20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Controllers" vertex="1">
+          <mxGeometry height="60" width="120" x="750" y="700" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
