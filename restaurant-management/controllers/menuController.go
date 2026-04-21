@@ -69,7 +69,28 @@ func GetMenu() gin.HandlerFunc{
 func CreateMenu() gin.HandlerFunc{
 	return func(c *gin.Context){
 
+var menu models.Menu
+if err:= c.BindJSON(&menu);err != nil{
+	c.JSON(http.StatusBadRequest,gin.H{"error":err.Error()})
+	return
+}
 
+ctx,cancel := context.WithTimeout(context.Background(),100*time.Second)
+defer cancel()
+
+menu.Created_at, _ = time.Parse(time.RFC3339,time.Now().Format(time.RFC3339))
+menu.Updated_at, _ = time.Parse(time.RFC3339,time.Now().Format(time.RFC3339))
+menu.ID = primitive.NewObjectID()
+menu.Menu_id = menu.ID.Hex()
+
+result,err := menuCollection.InsertOne(ctx,menu)
+
+if err != nil{
+	c.JSON(http.StatusInternalServerError,gin.H{"error":"error occured while creating menu item"})
+	return
+}
+c.JSON(http.StatusOK,result)	
+	
 	}
 }
 
