@@ -5,14 +5,16 @@ import (
 	"net/http"
 	"rtm/database"
 	"rtm/models"
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 
+	"fmt"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"fmt"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -23,6 +25,25 @@ var validate = validator.New()
 
 func GetFoods() gin.HandlerFunc{
 return func(c *gin.Context){
+
+// get context 
+		var ctx,cancel = context.WithTimeout(context.Background(),100*time.Second)
+
+	//pagination -> avoiding sending too much data to frontend
+		recordPerPage,err:= strconv.Atoi(c.Query("recordPerPage"))
+		if err != nil || recordPerPage<1{
+			recordPerPage= 10
+		}
+		page,err:= strconv.Atoi(c.Query("page"))
+		if err != nil || page<1{
+			page=1
+		}
+		startIndex := (page-1)*recordPerPage
+		startIndex,err = strconv.Atoi(c.Query("startIndex"))
+		 //-> study aggregation mongodb ->
+			//match stage 
+		// group stage 
+		// projectStage
 
 	}
 }
@@ -134,11 +155,8 @@ func UpdateFood() gin.HandlerFunc{
 
 
 func round(num float64)int{
+
 }
 
 func toFixed(num float64,precision int) float64{
-
-
-
-
 }
