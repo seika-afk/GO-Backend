@@ -40,12 +40,35 @@ return func(c *gin.Context){
 		}
 		startIndex := (page-1)*recordPerPage
 		startIndex,err = strconv.Atoi(c.Query("startIndex"))
-		 //-> study aggregation mongodb ->
 			//match stage 
+				matchStage := bson.D{{"$match",bson.D{{}}}}
 		// group stage 
+		groupStage := bson.D{{
+			"$group", bson.D{{
+				"_id", bson.D{{
+					"_id", "null"}}}, 
+					{"total_count", bson.D{{"$sum", 1}}}, 
+			{"data", bson.D{{"$push", "$$ROOT"}}}}}}
+		
+
 		// projectStage
 
+
+						projectStage := bson.D{
+										{"$project",bson.D{
+
+										{"_id",0},
+										{"total_count",1},
+										{"food_items",bson.D{
+													{"$slice",[]interface{}{"$data",startIndex,recordPerPage}}}},
+	}}}
+
+
+				// TODO : Understand this aggregation step 
+
+
 	}
+
 }
 
 
