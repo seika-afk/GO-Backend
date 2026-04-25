@@ -58,7 +58,7 @@ func GetFoods() gin.HandlerFunc {
 				{"_id", 0},
 				{"total_count", 1},
 				{"food_items", bson.D{
-					{"$slice", []interface{}{"$data", startIndex, recordPerPage}}}},
+					{"$slice", bson.A{"$data", startIndex, recordPerPage}}}},
 			}}}
 
 		res, err := foodCollection.Aggregate(ctx, mongo.Pipeline{
@@ -167,6 +167,29 @@ func CreateFood() gin.HandlerFunc {
 func UpdateFood() gin.HandlerFunc {
 
 	return func(c *gin.Context) {
+
+		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+		var menu models.Menu
+		var food models.Food
+		food_id := c.Param("food_id")
+		if err := c.BindJSON(&food); err != nil {
+
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		}
+		if food.Name != nil {
+
+		}
+		if food.Price != nil {
+
+		}
+		if food.Menu_id != nil {
+
+		}
+		if food.Food_image != nil {
+
+		}
+
+		food.Updated_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 
 	}
 }
