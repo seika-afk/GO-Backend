@@ -17,6 +17,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "food")
@@ -171,6 +172,7 @@ func UpdateFood() gin.HandlerFunc {
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 		var menu models.Menu
 		var food models.Food
+		var updateObj primitive.D
 		food_id := c.Param("food_id")
 		if err := c.BindJSON(&food); err != nil {
 
@@ -190,6 +192,17 @@ func UpdateFood() gin.HandlerFunc {
 		}
 
 		food.Updated_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+
+		updateObj = append(updateObj, bson.E{"updated_at", food.Updated_at})
+		upsert := true
+		filter := bson.M{"food_id": food_id}
+
+		opt := options.UpdateOptions{
+
+			upsert: &upsert,
+		}
+
+		foodCollection.UpdateOne{}
 
 	}
 }
