@@ -68,7 +68,7 @@ func GetFoods() gin.HandlerFunc {
 		defer cancel()
 
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.h{"error": "Error occured"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Error occured"})
 		}
 		var allFoods []bson.M
 		if err := res.All(ctx, &allFoods); err != nil {
@@ -202,7 +202,14 @@ func UpdateFood() gin.HandlerFunc {
 			upsert: &upsert,
 		}
 
-		foodCollection.UpdateOne{}
+		foodCollection.UpdateOne(
+			ctx,
+			filter,
+			bson.D{
+				{"$set", updateObj},
+			},
+			&opt,
+		)
 
 	}
 }
