@@ -202,7 +202,7 @@ func UpdateFood() gin.HandlerFunc {
 			upsert: &upsert,
 		}
 
-		foodCollection.UpdateOne(
+		res, err := foodCollection.UpdateOne(
 			ctx,
 			filter,
 			bson.D{
@@ -210,7 +210,12 @@ func UpdateFood() gin.HandlerFunc {
 			},
 			&opt,
 		)
-
+		if err != nil {
+			msg := fmt.Sprint("Food item updation failed")
+			c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+			return
+		}
+		c.JSON(http.StatusAccepted, res)
 	}
 }
 
