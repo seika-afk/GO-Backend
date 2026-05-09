@@ -9,9 +9,7 @@ import (
 	"rtm/routes"
 )
 
-var foodCollection *mongo.Collection = database.OpenCollection(database.Client,"food")
-
-
+var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "food")
 
 func main() {
 
@@ -33,6 +31,6 @@ func main() {
 	routes.OrderRoutes(router)
 	routes.OrderItemRoutes(router)
 	routes.InvoiceRoutes(router)
-	router.Run(":"+port)
+	router.Run(":" + port)
 
 }
