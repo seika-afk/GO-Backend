@@ -1,21 +1,18 @@
 package routes
 
-import ("github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
 
-controllers "rtm/controllers"
-
+	controllers "rtm/controllers"
 )
 
-func InvoiceRoutes(incomingRoutes *gin.Engine){
+func InvoiceRoutes(incomingRoutes *gin.Engine) {
 
+	incomingRoutes.GET("/invoices", controllers.GetInvoices())
+	incomingRoutes.GET("/invoices/:invoice_id", controllers.GetInvoice())
 
-incomingRoutes.GET("/invoices",controllers.GetInvoices())
-	incomingRoutes.GET("/invoices/:invoice_id",controllers.GetInvoice())
+	incomingRoutes.POST("/invoices", controllers.CreateInvoice())
 
-incomingRoutes.POST("/invoices",controllers.CreateInvoice())
-
-	incomingRoutes.GET("/invoices/:invoice_id",controllers.UpdateInvoice())
-
-
+	incomingRoutes.PATCH("/invoices/:invoice_id", controllers.UpdateInvoice())
 
 }

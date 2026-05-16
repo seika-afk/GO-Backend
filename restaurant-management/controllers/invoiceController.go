@@ -35,7 +35,7 @@ func GetInvoices() gin.HandlerFunc {
 
 		var ctx, cancel = context.WithTimeout(context.Background(), time.Second*100)
 
-		result, err := orderCollection.Find(context.TODO(), bson.M{})
+		result, err := invoiceCollection.Find(context.TODO(), bson.M{})
 		defer cancel()
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"msg": "Error occured while getting invoices"})

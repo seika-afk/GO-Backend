@@ -18,10 +18,11 @@ func GetTables() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
-		result, err := orderCollection.Find(context.TODO(), bson.M{})
+		result, err := tableCollection.Find(context.TODO(), bson.M{})
 		defer cancel()
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while listing table items"})
+			return
 		}
 		var allTables []bson.M
 		if err = result.All(ctx, &allTables); err != nil {
@@ -104,8 +105,11 @@ func UpdateTable() gin.HandlerFunc {
 		}
 
 		if table.Table_number != nil {
+			updateObj = append(updateObj, bson.E{"table_number", table.Table_number})
+		}
 
 		table.Updated_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+		updateObj = append(updateObj, bson.E{"updated_at", table.Updated_at})
 
 		upsert := true
 		opt := options.UpdateOptions{

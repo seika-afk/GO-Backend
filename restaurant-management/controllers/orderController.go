@@ -168,7 +168,7 @@ func UpdateOrder() gin.HandlerFunc {
 		)
 
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error", "Order item update failed"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Order item update failed"})
 			return
 		}
 		defer cancel()
