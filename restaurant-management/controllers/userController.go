@@ -18,7 +18,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-var userCollection *mongo.Collection = database.OpenCollection(database.Client, *user)
+var userCollection *mongo.Collection = database.OpenCollection(database.Client, "user")
 
 func GetUsers() gin.HandlerFunc {
 
