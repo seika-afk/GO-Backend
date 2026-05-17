@@ -115,9 +115,12 @@ func Signup() gin.HandlerFunc {
 		user.ID = primitive.NewObjectID()
 		user.User_id = user.ID.Hex()
 		// generate token and refreshh token use tokenHelper
-		token, refreshToken := helpers.GenerateAllTokens(*user.Email, *user.First_name, *user.Last_name, user.User_id)
+		token, refreshToken, err := helpers.GenerateAllTokens(*user.Email, *user.First_name, *user.Last_name, user.User_id)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		}
 		user.Token = &token
-		user.Refresh_Token = *refreshToken
+		user.Refresh_Token = &refreshToken
 		// insert into database
 
 		resultInsertionNumber, insertErr := userCollection.InsertOne(ctx, user)
@@ -154,7 +157,7 @@ func Login() gin.HandlerFunc {
 			return
 		}
 		// check pwd
-		passwordIsValid, msg := VerifyPassword(*user.Password, *foundUser.Password)
+		passwordIsValid, msg := VerifyPassword(*foundUser.Password, *user.Password)
 		defer cancel()
 		if passwordIsValid != true {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
@@ -179,9 +182,9 @@ func HashPassword(psd string) string {
 	return string(bytes)
 }
 
-// userPassword and providedPassword
-func VerifyPassword(uP string, pP string) (bool, string) {
-	err := bcrypt.CompareHashAndPassword([]byte(uP), []byte(pP))
+// hashedPassword and plainPassword
+func VerifyPassword(hashedPassword string, plainPassword string) (bool, string) {
+	err := bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(plainPassword))
 	if err != nil {
 		return false, err.Error()
 	}
