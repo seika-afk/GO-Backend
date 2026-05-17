@@ -324,3 +324,8 @@ The server generates string IDs after insert:
 - `order_id`
 - `order_item_id`
 - `invoice_id`
+
+
+# Note :
+Tutorial and some Learning resource : https://youtube.com/playlist?list=PL5dTjWUk_cPbjazI1vRuTRZi6o5QlVAAR&si=ao6N6uQ_57Et4zln
+
